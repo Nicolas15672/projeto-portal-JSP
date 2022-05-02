@@ -18,6 +18,7 @@ public class DAOUsuarioRepository {
 	}
 	
 	public ModelLogin gravarUsuario(ModelLogin objeto) throws Exception {
+		if(objeto.isNovo()) {
 		
 		String sql = "INSERT INTO model_login(login, senha, nome, email)  VALUES (?, ?, ?, ?);";
 		PreparedStatement preparedSql = connection.prepareStatement(sql);
@@ -31,7 +32,18 @@ public class DAOUsuarioRepository {
 		
 		connection.commit();
 		
-		
+		}else {
+			String atualizar="UPDATE model_login SET login=?, senha=?,nome=?,email=? WHERE id"+objeto.getId();
+			PreparedStatement preparedSql = connection.prepareStatement(atualizar);
+			
+			preparedSql.setString(1, objeto.getLogin());
+			preparedSql.setString(2, objeto.getSenha());
+			preparedSql.setString(3, objeto.getNome());
+			preparedSql.setString(4, objeto.getEmail());
+			preparedSql.executeUpdate();
+			connection.commit();
+			
+		}
 		return this.consultaUsuario(objeto.getLogin());
 	}
 	
@@ -44,20 +56,34 @@ public class DAOUsuarioRepository {
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
-		ResultSet resutlado =  statement.executeQuery();
+		ResultSet resultado =  statement.executeQuery();
 		
-		while (resutlado.next()) /*Se tem resultado*/ {
+		while (resultado.next()) /*Se tem resultado*/ {
 			
-			modelLogin.setId(resutlado.getLong("id"));
-			modelLogin.setEmail(resutlado.getString("email"));
-			modelLogin.setLogin(resutlado.getString("login"));
-			modelLogin.setSenha(resutlado.getString("senha"));
-			modelLogin.setNome(resutlado.getString("nome"));
+			modelLogin.setId(resultado.getLong("id"));
+			modelLogin.setEmail(resultado.getString("email"));
+			modelLogin.setLogin(resultado.getString("login"));
+			modelLogin.setSenha(resultado.getString("senha"));
+			modelLogin.setNome(resultado.getString("nome"));
 		}
 		
 		
 		return modelLogin;
 		
 	}
+
+     public boolean validarLogin(String login) throws Exception{
+    	 String sql = "select count(1)>0 as existe from model_login where upper(login) = upper('"+login+"')";
+    	 PreparedStatement statement = connection.prepareStatement(sql);
+ 		
+ 		 ResultSet resultado =  statement.executeQuery();
+ 		
+     if(resultado.next()) {
+    	 return resultado.getBoolean("existe");
+     }
+    
+     return false;
+     }
+
 
 }
