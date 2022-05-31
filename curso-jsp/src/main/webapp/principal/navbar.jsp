@@ -55,71 +55,27 @@
                               </a>
                               <ul class="show-notification">
                                   <li>
-                                      <h6>Notifications</h6>
-                                      <label class="label label-danger">New</label>
+                                      <h6>Novidades</h6>
+                                      <label class="label label-danger">Novo</label>
                                   </li>
+                                  
+                                 
                                   <li class="waves-effect waves-light">
-                                      <div class="media">
-                                          <img class="d-flex align-self-center img-radius" src="<%= request.getContextPath() %>/assets/images/avatar-2.jpg" alt="Generic placeholder image">
-                                          <div class="media-body">
-                                              <h5 class="notification-user"><%= request.getSession().getAttribute("usuario") %></h5>
-                                              <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                              <span class="notification-time">30 minutes ago</span>
-                                          </div>
-                                      </div>
-                                  </li>
-                                  <li class="waves-effect waves-light">
-                                      <div class="media">
-                                          <img class="d-flex align-self-center img-radius" src="<%= request.getContextPath() %>/assets/images/avatar-4.jpg" alt="Generic placeholder image">
-                                          <div class="media-body">
-                                              <h5 class="notification-user">Joseph William</h5>
-                                              <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                              <span class="notification-time">30 minutes ago</span>
-                                          </div>
-                                      </div>
-                                  </li>
-                                  <li class="waves-effect waves-light">
-                                      <div class="media">
-                                          <img class="d-flex align-self-center img-radius" src="<%= request.getContextPath() %>/assets/images/avatar-3.jpg" alt="Generic placeholder image">
-                                          <div class="media-body">
-                                              <h5 class="notification-user">Sara Soudein</h5>
-                                              <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                              <span class="notification-time">30 minutes ago</span>
-                                          </div>
-                                      </div>
+                                     
                                   </li>
                               </ul>
                           </li>
                           <li class="user-profile header-notification">
                               <a href="#!" class="waves-effect waves-light">
-                                  <img src="<%= request.getContextPath() %>/assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
                                   <span><%= request.getSession().getAttribute("usuario") %></span>
                                   <i class="ti-angle-down"></i>
                               </a>
                               <ul class="show-notification profile-notification">
-                                  <li class="waves-effect waves-light">
-                                      <a href="#!">
-                                          <i class="ti-settings"></i> Settings
-                                      </a>
-                                  </li>
-                                  <li class="waves-effect waves-light">
-                                      <a href="user-profile.html">
-                                          <i class="ti-user"></i> Profile
-                                      </a>
-                                  </li>
-                                  <li class="waves-effect waves-light">
-                                      <a href="email-inbox.html">
-                                          <i class="ti-email"></i> My Messages
-                                      </a>
-                                  </li>
-                                  <li class="waves-effect waves-light">
-                                      <a href="auth-lock-screen.html">
-                                          <i class="ti-lock"></i> Lock Screen
-                                      </a>
-                                  </li>
+                                
+                                 
                                   <li class="waves-effect waves-light">
                                       <a href="<%=request.getContextPath() %>/ServletLogin?acao=logout">
-                                          <i class="ti-layout-sidebar-left"></i> Logout
+                                          <i class="ti-layout-sidebar-left"></i> Sair
                                       </a>
                                   </li>
                               </ul>
